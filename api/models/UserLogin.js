@@ -66,7 +66,7 @@ module.exports = {
     // Attached User object of this UserLogin
     user: {
       model: 'User',
-      columnName: 'userId',
+      columnName: 'user_id',
       required: true
     }
   }

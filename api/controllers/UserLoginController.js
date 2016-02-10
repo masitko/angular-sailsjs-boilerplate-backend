@@ -23,7 +23,7 @@ module.exports = _.merge(_.cloneDeep(require('../base/Controller')), {
         break;
       case 'User':
       default:
-        groupBy = 'userId';
+        groupBy = 'user_id';
         break;
     }
 
@@ -45,7 +45,7 @@ module.exports = _.merge(_.cloneDeep(require('../base/Controller')), {
      * @returns {Promise|Array}
      */
     var fetchUsers = function fetchUsers() {
-      return (groupBy === 'userId') ? sails.models.user.find() : [];
+      return (groupBy === 'user_id') ? sails.models.user.find() : [];
     };
 
     /**
@@ -60,7 +60,7 @@ module.exports = _.merge(_.cloneDeep(require('../base/Controller')), {
     var formatData = function formatData(data) {
       return _.map(data.stats, function iterator(item) {
         return [
-          (groupBy === 'userId') ? _findUser(item['user']) : item[groupBy],
+          (groupBy === 'user_id') ? _findUser(item['user']) : item[groupBy],
           item.count
         ];
       });
@@ -68,13 +68,13 @@ module.exports = _.merge(_.cloneDeep(require('../base/Controller')), {
       /**
        * Helper function to find user name.
        *
-       * @param   {number}  userId
+       * @param   {number}  user_id
        * @returns {string}
        * @private
        */
-      function _findUser(userId) {
+      function _findUser(user_id) {
         var user = _.find(data.users, function iterator(user) {
-          return user.id === userId;
+          return user.id === user_id;
         });
 
         return user ? user.lastName + ', ' + user.firstName + ' (' + user.username + ')' : 'Unknown user';
