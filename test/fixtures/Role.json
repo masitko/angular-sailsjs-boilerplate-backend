@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "admin",
+    "description": "Admin Role",
+    "active": true
+  },
+  {
+    "id": 2,
+    "name": "operator",
+    "description": "Operator Role",
+    "active": true
+  },
+  {
+    "id": 3,
+    "name": "client",
+    "description": "Client Role",
+    "active": true
+  },
+  {
+    "id": 4,
+    "name": "manager",
+    "description": "Account Manager Role",
+    "active": true
+  }
+ 
+]

@@ -55,5 +55,5 @@ module.exports.globals = {
    * your models via sails.models.*.                                           *
    *                                                                           *
    ****************************************************************************/
-  models: false
+  models: true
 };

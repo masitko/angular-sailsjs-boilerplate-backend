@@ -32,12 +32,12 @@ module.exports = function hook(sails) {
             var barrels = new Barrels();
             var fixtures = _.keys(barrels.data);
 
-            barrels.populate(['user'], function(error) {
+            barrels.populate(['role', 'user'], function(error) {
               if (error) {
                 next(error);
               }
 
-              fixtures = _.without(fixtures, 'user');
+              fixtures = _.without(fixtures, 'role', 'user');
 
               barrels.populate(fixtures, next, false);
             }, false);

@@ -47,7 +47,7 @@ module.exports.log = {
      *                                                                          *
      ***************************************************************************/
 
-    level:'info',
+    level:'verbose',
     colorize: false,
     json: false,
     custom: logger

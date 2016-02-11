@@ -1,5 +1,7 @@
 'use strict';
 
+var _ = require('lodash');
+
 /**
  * Policy to check if current user is admin or not.
  *
@@ -15,7 +17,10 @@ module.exports = function isAdmin(request, response, next) {
   // Fetch current user by the token
   sails.models['user']
     .findOne(request.token)
+    .populate('roles')
     .exec(function exec(error, user) {
+        
+        console.log(_.find(user.roles, {'name': 'admin1'} ) === void 0);
       if (error) {
         next(error);
       } else if (!user) {
@@ -25,7 +30,8 @@ module.exports = function isAdmin(request, response, next) {
         error.message = 'User not found - Please login.';
 
         next(error);
-      } else if (user.admin) {
+//      } else if (user.admin) {
+      } else if (_.find(user.roles, {'name': 'admin'} ) !== void 0) {
         next();
       } else {
         error = new Error();
