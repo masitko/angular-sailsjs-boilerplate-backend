@@ -80,6 +80,7 @@ exports.login = function login(request, identifier, password, next) {
 
   sails.models.user
     .findOne(query)
+    .populate('roles')
     .exec(function onExec(error, user) {
       if (error) {
         next(error);
