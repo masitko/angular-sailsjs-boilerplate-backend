@@ -20,7 +20,6 @@ module.exports = function isAdmin(request, response, next) {
     .populate('roles')
     .exec(function exec(error, user) {
         
-        console.log(_.find(user.roles, {'name': 'admin1'} ) === void 0);
       if (error) {
         next(error);
       } else if (!user) {
